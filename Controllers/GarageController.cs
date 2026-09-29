@@ -26,4 +26,15 @@ public class GarageController : Controller
     {
         return View();
     }
+    [HttpPost]
+    public IActionResult Create(Car car)
+    {
+        if (ModelState.IsValid)
+        {
+            car.Id = GarageData.All.Max(c => c.Id) + 1;
+            GarageData.All.Add(car);
+            return RedirectToAction(nameof(Index));
+        }
+        return View(car);
+    }
 }
