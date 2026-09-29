@@ -22,4 +22,8 @@ public class GarageController : Controller
         }
         return View(car);
     }
+    public IActionResult Create()
+    {
+        return View();
+    }
 }
